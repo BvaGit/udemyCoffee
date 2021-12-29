@@ -13,16 +13,32 @@ class App extends Component {
     }
   }
 
+  routing = (namePage) => {
+    const copyPage = {...this.state.page}
+    for (let key in copyPage) {
+      console.log(key, namePage)
+      if (key === namePage){
+        copyPage[key] = true;
+      } else {
+        copyPage[key] = false;
+      }
+      
+    }
+    this.setState(() => {
+      return {page: copyPage}
+    })
+  }
+
   render() {
     const {main, ourCoffee, pleasure} = this.state.page
     return (
       <div>
         { main ? 
-          <Main />
+          <Main routing={this.routing}/>
         : ourCoffee ?
-          <OurCoffe />
+          <OurCoffe routing={this.routing}/>
         : pleasure ?
-          <Pleasure />
+          <Pleasure routing={this.routing} />
         : null }
       </div>
     )

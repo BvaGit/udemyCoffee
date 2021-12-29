@@ -1,9 +1,9 @@
 import MenuItems from "../MenuItems/MenuItems"
 
-const Header = () => {
+const Header = ({routing}) => {
     return(
         <>
-            <MenuItems />
+            <MenuItems routing={routing}/>
         </>
     )
 }
